@@ -16,8 +16,8 @@ class App extends React.Component {
       .catch(err => console.log("Error!: ", err));
   };
 
-  handleSearchbarChange = e => {
-    this.setState({ searchTerm: e.target.value });
+  handleFormChange = e => {
+    this.setState({ [e.target.id]: e.target.value });
   };
 
   componentDidMount() {
@@ -40,7 +40,7 @@ class App extends React.Component {
         <NavBar
           sortBy={this.state.sortBy}
           searchTitles={this.searchTitles}
-          handleSearchbarChange={this.handleSearchbarChange}
+          handleFormChange={this.handleFormChange}
           searchTerm={this.state.searchTerm}
         />
         <ul>

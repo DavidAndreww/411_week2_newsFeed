@@ -1,6 +1,6 @@
 import React from "react";
 
-const NavBar = ({ handleSearchbarChange, searchTerm, searchTitles, sortBy }) => {
+const NavBar = ({ handleFormChange, searchTerm, searchTitles, sortBy }) => {
   console.log(searchTerm)
   console.log(sortBy)
   return (
@@ -8,7 +8,7 @@ const NavBar = ({ handleSearchbarChange, searchTerm, searchTitles, sortBy }) => 
       <h1>News Feed</h1>
       <form onSubmit={() => searchTitles()}>
         <label>Sort by: </label>
-        <select>
+        <select id='sortBy' onChange={handleFormChange}>
           <option value="date">
             Date
           </option>
@@ -17,7 +17,7 @@ const NavBar = ({ handleSearchbarChange, searchTerm, searchTitles, sortBy }) => 
         </select>
         <br />
         <label>Search Titles: </label>
-        <input id="search-query" value={searchTerm} type="text" onChange={handleSearchbarChange}></input>
+        <input id="searchTerm" value={searchTerm} type="text" onChange={handleFormChange}></input>
         <button type="submit">Search</button>
       </form>
     </nav> 

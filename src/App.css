@@ -1,0 +1,22 @@
+.loading {
+  margin-top: 2em;
+  text-align: center;
+  animation: blinkingText 0.8s infinite;
+}
+@keyframes blinkingText {
+  0% {
+    color: #000;
+  }
+  45% {
+    color: transparent;
+  }
+  50% {
+    color: transparent;
+  }
+  55% {
+    color: transparent;
+  }
+  100% {
+    color: #000;
+  }
+}

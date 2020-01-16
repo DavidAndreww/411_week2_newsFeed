@@ -18,7 +18,7 @@ class App extends React.Component {
 
   render() {
     if (this.state.articles.length === 0) {
-      return <p>Loading</p>;
+      return <p className="loading">Loading Feed...</p>;
     }
     return <div>News Feed!!!</div>;
   }

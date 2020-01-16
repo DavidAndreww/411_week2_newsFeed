@@ -36,13 +36,43 @@ class App extends React.Component {
     if (this.state.articles.length === 0) {
       return <p className="loading">Loading Feed...</p>;
     }
+    let compareDate = (a, b) => {
+      let createdA = a.created_at;
+      let createdB = b.created_at;
+
+      let comparison = 0;
+      createdA > createdB ? comparison = 1 : comparison = -1;
+      return comparison
+    }
+
+    let compareAuthor = (a, b) => {
+      let createdA = a.author;
+      let createdB = b.author;
+
+      let comparison = 0;
+      createdA > createdB ? comparison = 1 : comparison = -1;
+      return comparison
+    }
+
+    let comparePopular = (a, b) => {
+      let createdA = a.points;
+      let createdB = b.points;
+
+      let comparison = 0;
+      createdA > createdB ? comparison = -1 : comparison = 1;
+      return comparison
+    }
     let { searchTerm, sortBy, articles } = this.state;
+
     if(sortBy === 'date'){
+      articles.sort(compareDate)
       // https://www.sitepoint.com/sort-an-array-of-objects-in-javascript/
       console.log('sort by date', articles)
     } else if (sortBy === 'author') {
+      articles.sort(compareAuthor)
       console.log('sort by author', searchTerm)
     } else if (sortBy === 'popular') {
+      articles.sort(comparePopular)
       console.log('sort by popular', searchTerm)
     }
     return (

@@ -1,7 +1,8 @@
 import React from "react";
 
-const NavBar = ({ handleSearchbarChange, searchTerm, searchTitles }) => {
+const NavBar = ({ handleSearchbarChange, searchTerm, searchTitles, sortBy }) => {
   console.log(searchTerm)
+  console.log(sortBy)
   return (
     <nav>
       <h1>News Feed</h1>

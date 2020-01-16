@@ -5,7 +5,8 @@ import NavBar from "./NavBar";
 class App extends React.Component {
   state = {
     articles: [],
-    searchTerm: ""
+    searchTerm: "",
+    sortBy: ""
   };
 
   fetchData = x => {
@@ -37,6 +38,7 @@ class App extends React.Component {
     return (
       <div>
         <NavBar
+          sortBy={this.state.sortBy}
           searchTitles={this.searchTitles}
           handleSearchbarChange={this.handleSearchbarChange}
           searchTerm={this.state.searchTerm}

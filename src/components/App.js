@@ -6,7 +6,7 @@ class App extends React.Component {
   state = {
     articles: [],
     searchTerm: "",
-    sortBy: ""
+    sortBy: "date"
   };
 
   fetchData = x => {
@@ -24,6 +24,7 @@ class App extends React.Component {
     this.fetchData();
   }
 
+  // event.preventDefault is breaking code....searchfield works if query is performed when state changes using onChange, but not on form submit
   searchTitles(event) {
     event.preventDefault();
     let { searchTerm } = this.state;
@@ -35,16 +36,24 @@ class App extends React.Component {
     if (this.state.articles.length === 0) {
       return <p className="loading">Loading Feed...</p>;
     }
+    let { searchTerm, sortBy, articles } = this.state;
+    if(sortBy === 'date'){
+      // https://www.sitepoint.com/sort-an-array-of-objects-in-javascript/
+      console.log('sort by date', articles)
+    } else if (sortBy === 'author') {
+      console.log('sort by author', searchTerm)
+    } else if (sortBy === 'popular') {
+      console.log('sort by popular', searchTerm)
+    }
     return (
       <div>
         <NavBar
-          sortBy={this.state.sortBy}
           searchTitles={this.searchTitles}
           handleFormChange={this.handleFormChange}
           searchTerm={this.state.searchTerm}
         />
         <ul>
-          {this.state.articles.map((post, index) => (
+          {articles.map((post, index) => (
             <Article key={post.objectID} postData={post} />
           ))}
         </ul>

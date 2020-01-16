@@ -16,11 +16,16 @@ class App extends React.Component {
   };
 
   handleSearchbarChange = e => {
-    console.log('hey')
+    this.setState({searchTerm: e.target.value})
   };
 
   componentDidMount() {
     this.fetchData();
+  }
+
+  componentDidUpdate() {
+    let {searchTerm} = this.state;
+    this.fetchData(searchTerm)
   }
 
   render() {

@@ -6,7 +6,7 @@ const NavBar = ({ handleSearchbarChange, searchTerm }) => {
     <nav>
       <h1>News Feed</h1>
       <form>
-        <label>Sort by:</label>
+        <label>Sort by: </label>
         <select>
           <option value="date">
             Date
@@ -15,8 +15,8 @@ const NavBar = ({ handleSearchbarChange, searchTerm }) => {
           <option value="popular">Most Popular</option>
         </select>
         <br />
-        <label>Search Titles:</label>
-        <input id="search-query" type="text" onChange={handleSearchbarChange}></input>
+        <label>Search Titles: </label>
+        <input id="search-query" value={searchTerm} type="text" onChange={handleSearchbarChange}></input>
       </form>
     </nav> 
   );

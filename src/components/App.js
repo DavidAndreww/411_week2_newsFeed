@@ -27,7 +27,7 @@ class App extends React.Component {
     event.preventDefault();
     let { searchTerm } = this.state;
     console.log('submitted:' , searchTerm)
-    // this.fetchData(search);
+    this.fetchData(searchTerm);
   }
 
   render() {

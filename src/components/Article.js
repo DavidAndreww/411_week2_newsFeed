@@ -1,10 +1,10 @@
 import React from "react";
 
-const Article = (props) => {
+const Article = ({postData}) => {
   return (
     <div>
-      <h1>{props.author}</h1>
-      <p>{props.title}</p>
+      <h1>{postData.author}</h1>
+      <p>{postData.title}</p>
     </div>
   );
 };

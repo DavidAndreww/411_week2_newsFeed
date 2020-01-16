@@ -1,11 +1,11 @@
 import React from "react";
-import Article from './Article'
+import Article from "./Article";
 
 class App extends React.Component {
   state = {
     articles: [],
-    date: '',
-    author: ''
+    date: "",
+    author: ""
   };
 
   fetchData = () => {
@@ -25,12 +25,11 @@ class App extends React.Component {
     }
     return (
       <div>
-        <ul>{this.state.articles.map((post, index) =>(
-          <Article
-           author={post.author}
-           title={post.title}
-           />
-        ))}</ul>
+        <ul>
+          {this.state.articles.map((post, index) => (
+            <Article key={post.objectID} postData={post} />
+          ))}
+        </ul>
       </div>
     );
   }

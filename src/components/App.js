@@ -44,7 +44,7 @@ class App extends React.Component {
       let createdB = b.created_at;
 
       let comparison = 0;
-      createdA > createdB ? (comparison = 1) : (comparison = -1);
+      createdA > createdB ? (comparison = -1) : (comparison = 1);
       return comparison;
     };
 

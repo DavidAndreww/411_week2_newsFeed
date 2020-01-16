@@ -8,7 +8,7 @@ const NavBar = ({ handleFormChange, searchTerm, searchTitles }) => {
         <label>Sort by: </label>
         <select id='sortBy' onChange={handleFormChange}>
           <option value="date">
-            Date
+            Most Recent
           </option>
           <option value="author">Author</option>
           <option value="popular">Most Popular</option>

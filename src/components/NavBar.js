@@ -1,11 +1,11 @@
 import React from "react";
 
-const NavBar = ({ handleSearchbarChange, searchTerm }) => {
+const NavBar = ({ handleSearchbarChange, searchTerm, searchTitles }) => {
   console.log(searchTerm)
   return (
     <nav>
       <h1>News Feed</h1>
-      <form>
+      <form onSubmit={() => searchTitles()}>
         <label>Sort by: </label>
         <select>
           <option value="date">
@@ -17,6 +17,7 @@ const NavBar = ({ handleSearchbarChange, searchTerm }) => {
         <br />
         <label>Search Titles: </label>
         <input id="search-query" value={searchTerm} type="text" onChange={handleSearchbarChange}></input>
+        <button type="submit">Search</button>
       </form>
     </nav> 
   );

@@ -16,16 +16,18 @@ class App extends React.Component {
   };
 
   handleSearchbarChange = e => {
-    this.setState({searchTerm: e.target.value})
+    this.setState({ searchTerm: e.target.value });
   };
 
   componentDidMount() {
     this.fetchData();
   }
 
-  componentDidUpdate() {
-    let {searchTerm} = this.state;
-    this.fetchData(searchTerm)
+  searchTitles(event) {
+    event.preventDefault();
+    let { searchTerm } = this.state;
+    console.log('submitted:' , searchTerm)
+    // this.fetchData(search);
   }
 
   render() {
@@ -35,6 +37,7 @@ class App extends React.Component {
     return (
       <div>
         <NavBar
+          searchTitles={this.searchTitles}
           handleSearchbarChange={this.handleSearchbarChange}
           searchTerm={this.state.searchTerm}
         />

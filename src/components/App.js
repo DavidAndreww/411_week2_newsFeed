@@ -49,8 +49,8 @@ class App extends React.Component {
     };
 
     let compareAuthor = (a, b) => {
-      let createdA = a.author;
-      let createdB = b.author;
+      let createdA = a.author.toLowerCase();
+      let createdB = b.author.toLowerCase();
 
       let comparison = 0;
       createdA > createdB ? (comparison = 1) : (comparison = -1);

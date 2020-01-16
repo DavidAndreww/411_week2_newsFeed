@@ -1,3 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.article {
+  /* display: flex; */
+  background-color: rgb(224, 186, 186);
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  margin: 10px 0px;
+}
+.article .sub-text {
+  color: rgb(104, 104, 104);
+  font-size: small;
+}
+
+
+
+
+
+
+
+
 .loading {
   margin-top: 2em;
   text-align: center;

@@ -9,6 +9,13 @@ class App extends React.Component {
     sortBy: "date"
   };
 
+  componentDidMount() {
+    fetch(`http://hn.algolia.com/api/v1/search?query=...`)
+      .then(res => res.json())
+      .then(json => this.setState({ articles: json.hits }))
+      .catch(err => console.log("Error!: ", err));
+  }
+
   fetchData = x => {
     fetch(`http://hn.algolia.com/api/v1/search?query=${x}`)
       .then(res => res.json())
@@ -20,15 +27,11 @@ class App extends React.Component {
     this.setState({ [e.target.id]: e.target.value });
   };
 
-  componentDidMount() {
-    this.fetchData();
-  }
-
   // event.preventDefault is breaking code....searchfield works if query is performed when state changes using onChange, but not on form submit
   searchTitles(event) {
     event.preventDefault();
     let { searchTerm } = this.state;
-    console.log('submitted:' , searchTerm)
+    console.log("submitted:", searchTerm);
     this.fetchData(searchTerm);
   }
 
@@ -41,39 +44,39 @@ class App extends React.Component {
       let createdB = b.created_at;
 
       let comparison = 0;
-      createdA > createdB ? comparison = 1 : comparison = -1;
-      return comparison
-    }
+      createdA > createdB ? (comparison = 1) : (comparison = -1);
+      return comparison;
+    };
 
     let compareAuthor = (a, b) => {
       let createdA = a.author;
       let createdB = b.author;
 
       let comparison = 0;
-      createdA > createdB ? comparison = 1 : comparison = -1;
-      return comparison
-    }
+      createdA > createdB ? (comparison = 1) : (comparison = -1);
+      return comparison;
+    };
 
     let comparePopular = (a, b) => {
       let createdA = a.points;
       let createdB = b.points;
 
       let comparison = 0;
-      createdA > createdB ? comparison = -1 : comparison = 1;
-      return comparison
-    }
+      createdA > createdB ? (comparison = -1) : (comparison = 1);
+      return comparison;
+    };
     let { searchTerm, sortBy, articles } = this.state;
 
-    if(sortBy === 'date'){
-      articles.sort(compareDate)
+    if (sortBy === "date") {
+      articles.sort(compareDate);
       // https://www.sitepoint.com/sort-an-array-of-objects-in-javascript/
-      console.log('sort by date', articles)
-    } else if (sortBy === 'author') {
-      articles.sort(compareAuthor)
-      console.log('sort by author', searchTerm)
-    } else if (sortBy === 'popular') {
-      articles.sort(comparePopular)
-      console.log('sort by popular', searchTerm)
+      console.log("sort by date", articles);
+    } else if (sortBy === "author") {
+      articles.sort(compareAuthor);
+      console.log("sort by author", searchTerm);
+    } else if (sortBy === "popular") {
+      articles.sort(comparePopular);
+      console.log("sort by popular", searchTerm);
     }
     return (
       <div>

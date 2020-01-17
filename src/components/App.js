@@ -22,25 +22,19 @@ class App extends React.Component {
       .then(res => res.json())
       .then(json => this.setState({ articles: json.hits }))
       .catch(err => console.log("Error!: ", err));
-    /* 
-      if (this.state.articles === 0)
-      fetch(`http://hn.algolia.com/api/v1/search?tags=author_${x}`)
-      .then(res => res.json())
-      .then(json => this.setState({ articles: json.hits }))
-      .catch(err => console.log("Error!: ", err)); 
-      */
   };
 
   handleFormChange = e => {
     this.setState({ [e.target.id]: e.target.value });
+    this.fetchData(this.state.searchTerm);
   };
 
-  // event.preventDefault is breaking code....searchfield works if query is performed when state changes using onChange, but not on form submit
+  // not working
   searchTitles(e) {
     e.preventDefault();
-    let { searchTerm } = this.state;
-    console.log("submitted:", this.state.searchTerm);
-    this.fetchData(searchTerm);
+    console.log("submitted:");
+    // let { searchTerm } = this.state;
+    // this.fetchData(searchTerm)
   }
 
   render() {
@@ -48,12 +42,15 @@ class App extends React.Component {
       return <p className="loading">Loading Feed...</p>;
     }
 
-    let { sortBy, articles } = this.state;
+    let { sortBy, articles, searchTerm } = this.state;
     if (sortBy === "date") {
+      console.log("Sort date", searchTerm);
       articles.sort(compareDate);
     } else if (sortBy === "author") {
+      console.log("Sort author", searchTerm);
       articles.sort(compareAuthor);
     } else if (sortBy === "popular") {
+      console.log("Sort popular", searchTerm);
       articles.sort(comparePopular);
     }
     return (

@@ -21,6 +21,13 @@ class App extends React.Component {
       .then(res => res.json())
       .then(json => this.setState({ articles: json.hits }))
       .catch(err => console.log("Error!: ", err));
+      /* 
+      if (this.state.articles === 0)
+      fetch(`http://hn.algolia.com/api/v1/search?tags=author_${x}`)
+      .then(res => res.json())
+      .then(json => this.setState({ articles: json.hits }))
+      .catch(err => console.log("Error!: ", err)); 
+      */
   };
 
   handleFormChange = e => {

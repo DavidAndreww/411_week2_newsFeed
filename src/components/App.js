@@ -36,9 +36,9 @@ class App extends React.Component {
 
   // event.preventDefault is breaking code....searchfield works if query is performed when state changes using onChange, but not on form submit
   searchTitles(event) {
-    event.preventDefault();
+    console.log(event.target.value)
     let { searchTerm } = this.state;
-    console.log("submitted:", searchTerm);
+    console.log("submitted:", this.state.searchTerm);
     this.fetchData(searchTerm);
   }
 
@@ -77,7 +77,7 @@ class App extends React.Component {
     if (sortBy === "date") {
       articles.sort(compareDate);
       // https://www.sitepoint.com/sort-an-array-of-objects-in-javascript/
-      console.log("sort by date", articles);
+      console.log("sort by date", searchTerm);
     } else if (sortBy === "author") {
       articles.sort(compareAuthor);
       console.log("sort by author", searchTerm);

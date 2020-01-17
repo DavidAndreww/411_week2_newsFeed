@@ -19,7 +19,7 @@ const NavBar = ({ handleFormChange, searchTerm, searchTitles }) => {
           type="text"
           onChange={handleFormChange}
         ></input>
-        <button type="submit">Search</button>
+        <button type="submit" onClick={() => searchTitles()}>Search</button>
       </form>
     </nav>
   );

@@ -1,7 +1,7 @@
 import React from "react";
 import Article from "./Article";
 import NavBar from "./NavBar";
-import { comparePopular, compareDate, compareAuthor } from '../HelperFunctions'
+import { comparePopular, compareDate, compareAuthor } from "../HelperFunctions";
 
 class App extends React.Component {
   state = {
@@ -22,7 +22,7 @@ class App extends React.Component {
       .then(res => res.json())
       .then(json => this.setState({ articles: json.hits }))
       .catch(err => console.log("Error!: ", err));
-      /* 
+    /* 
       if (this.state.articles === 0)
       fetch(`http://hn.algolia.com/api/v1/search?tags=author_${x}`)
       .then(res => res.json())
@@ -37,7 +37,7 @@ class App extends React.Component {
 
   // event.preventDefault is breaking code....searchfield works if query is performed when state changes using onChange, but not on form submit
   searchTitles(e) {
-    e.preventDefault()
+    e.preventDefault();
     let { searchTerm } = this.state;
     console.log("submitted:", this.state.searchTerm);
     this.fetchData(searchTerm);

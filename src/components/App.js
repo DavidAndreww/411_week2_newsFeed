@@ -26,14 +26,13 @@ class App extends React.Component {
 
   handleFormChange = e => {
     this.setState({ [e.target.id]: e.target.value });
-    // this.fetchData(this.state.searchTerm);
   };
 
-  searchTitles = (e) => {
+  searchTitles = e => {
     e.preventDefault();
     let { searchTerm } = this.state;
-    this.fetchData(searchTerm)
-  }
+    this.fetchData(searchTerm);
+  };
 
   render() {
     if (this.state.articles.length === 0) {

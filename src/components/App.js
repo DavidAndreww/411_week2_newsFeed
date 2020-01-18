@@ -9,25 +9,25 @@ class App extends React.Component {
     searchTerm: "",
     sortBy: "date"
   };
-
+  //fetch from default API when component mounts
   componentDidMount() {
     fetch(`http://hn.algolia.com/api/v1/search?query=...`)
       .then(res => res.json())
       .then(json => this.setState({ articles: json.hits }))
       .catch(err => console.log("Error!: ", err));
   }
-
+  // fetchData takes parameter to use as query in API search
   fetchData = x => {
-    fetch(`http://hn.algolia.com/api/v1/search?query=${x}`)
+    fetch(`http://hn.algolia.com/api/v1/search?query=${x}&tags=story`)
       .then(res => res.json())
       .then(json => this.setState({ articles: json.hits }))
       .catch(err => console.log("Error!: ", err));
   };
-
+  // updates state.searchTerm, which holds value from input field, and is passed to fetchData in the searchTitles function (Line 31)
   handleFormChange = e => {
     this.setState({ [e.target.id]: e.target.value });
   };
-
+  // on form submit (NavBar.js, line 6) feeds searchTerm into fetch API to return data
   searchTitles = e => {
     e.preventDefault();
     let { searchTerm } = this.state;
@@ -39,6 +39,7 @@ class App extends React.Component {
       return <p className="loading">Loading Feed...</p>;
     }
 
+    // uses helper functions to sort state.articles array according to state.sortBy, which is toggled by the select input field (NavBar.js, line 9)
     let { sortBy, articles, searchTerm } = this.state;
     if (sortBy === "date") {
       console.log("Sort date", searchTerm);

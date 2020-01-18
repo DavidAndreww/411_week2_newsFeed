@@ -12,7 +12,7 @@ const NavBar = ({ handleFormChange, searchTerm, searchTitles }) => {
           <option value="popular">Most Popular</option>
         </select>
         <br />
-        <label htmlFor="searchTerm">Search Titles: </label>
+        <label htmlFor="searchTerm">Search titles: </label>
         <input
           id="searchTerm"
           value={searchTerm}

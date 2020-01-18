@@ -26,15 +26,13 @@ class App extends React.Component {
 
   handleFormChange = e => {
     this.setState({ [e.target.id]: e.target.value });
-    this.fetchData(this.state.searchTerm);
+    // this.fetchData(this.state.searchTerm);
   };
 
-  // not working
-  searchTitles(e) {
+  searchTitles = (e) => {
     e.preventDefault();
-    console.log("submitted:");
-    // let { searchTerm } = this.state;
-    // this.fetchData(searchTerm)
+    let { searchTerm } = this.state;
+    this.fetchData(searchTerm)
   }
 
   render() {

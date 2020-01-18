@@ -1,6 +1,7 @@
 import React from "react";
 
 const NavBar = ({ handleFormChange, searchTerm, searchTitles }) => {
+  
   return (
       <form onSubmit={searchTitles}>
       <h1>News Feed</h1>
@@ -18,7 +19,6 @@ const NavBar = ({ handleFormChange, searchTerm, searchTitles }) => {
           type="text"
           onChange={handleFormChange}
         ></input>
-        {/* creating anonymous function breaks onClick?? e becomes undefined */}
         <button type="submit">Search</button>
       </form>
   );
